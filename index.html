@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Colorlib Templates" />
+    <meta name="author" content="Colorlib" />
+    <meta name="keywords" content="Colorlib Templates" />
+
+    <title>Registration Info</title>
+<style>
+
+.error{
+    border-bottom: 2px solid red;
+  }
+   .hidden  {
+       display: none;
+   }
+
+   .label {
+            width: 100px;
+            display: inline-block;
+            color: #ffffff;
+        }
+</style>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all" />
+  </head>
+
+  <body>
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+      <div class="wrapper wrapper--w780">
+        <div class="card card-3">
+          <div class="card-heading"></div>
+          <div class="card-body">
+            <h2 class="title">Registration Info</h2>
+            <form id = 'pahse2'> 
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="text"
+                  placeholder="City"
+                  name="city"
+                  id="cityId"
+                />
+              </div>
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="text"
+                  placeholder="Street"
+                  name="Street"
+                  id="streetId"
+                />
+              </div>
+
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="number"
+                  placeholder="Number"
+                  name="number"
+                  id="numId"
+                />
+              </div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+
+              <div class="p-t-10">
+                <button
+                  class="btn btn--pill btn--green"
+                  type="button"
+                  id="btnId"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+
+            <form id = 'pahse3' class="hidden"> 
+                <div class="input-group">
+                  <input
+                    class="input--style-3"
+                    src=""
+                    type="text"
+                    placeholder=" image URL"
+                    id="imageId"
+                  />
+                </div>
+            
+                <div>
+                    <label class="label">Hobbies</label>
+                    <input type="checkbox" hobby value="Movies"> Movies
+                    <input type="checkbox" hobby value="Surfing"> Surfing
+                    <input type="checkbox" hobby value="Lego"> Lego
+                    <input type="checkbox" hobby value="Gmara"> Gmara
+                    <input type="checkbox" hobby value="Cooking"> Cooking
+                </div>
+    
+                  <br />
+                <br />
+  
+                <div class="p-t-10">
+                  <button
+                    class="btn btn--pill btn--green"
+                    type="button"
+                    id="btn3Id"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main JS-->
+    <script>
+      let cityId, streetId, numId, btnId , pahse2;
+      const info = {};
+      (() => {
+        cityId = document.querySelector("#cityId");
+        streetId = document.querySelector("#streetId");
+        numId = document.querySelector("#numId");
+        btnId = document.querySelector("#btnId");
+        pahse2 = document.querySelector("#pahse2");
+        pahse3 = document.querySelector("#pahse3");
+
+
+
+      })();
+// validate function to check if the inputs are valid or not return boolean
+      function validate() {
+        if ((cityId.value != "" && streetId.value != "" && numId.value > 0)) {
+            cityId.className = 'input--style-3';
+            streetId.className = 'input--style-3';
+            numId.className = 'input--style-3';
+
+          return true;
+        }
+        else {
+            if (cityId.value == "" ){
+                cityId.className += ' error';
+            }else {
+                cityId.className = 'input--style-3';
+            }
+
+            if (streetId.value == "" ){
+                streetId.className += ' error';
+            }else {
+                streetId.className = 'input--style-3';
+            }
+            
+             if (numId.value == "" ){
+                numId.className += ' error';
+            }else {
+                numId.className = 'input--style-3';
+            }
+
+        }
+      }
+      btnId.addEventListener(('click'), () => {
+        if (validate()) {
+            info.city = cityId.value;
+            info.street = streetId.value;
+            info.num = numId.value;
+            pahse2.className += 'hidden';
+            pahse3.className = '';
+
+          console.log(info);
+        }else 
+        console.log(" not valid");
+
+      });
+    </script>
+  </body>
+</html>
