@@ -26,6 +26,18 @@
             display: inline-block;
             color: #ffffff;
         }
+        
+        .hobby {
+            width: 40px;
+            color: #ffffff;
+        }
+
+        .checkLabel{
+          color: #ffffff;
+        }
+
+
+
 </style>
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
@@ -35,7 +47,7 @@
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all" />
   </head>
- 
+
   <body>
     <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
       <div class="wrapper wrapper--w780">
@@ -101,12 +113,12 @@
                 </div>
             
                 <div>
-                    <label class="label">Hobbies</label>
-                    <input type="checkbox" hobby value="Movies"> Movies
-                    <input type="checkbox" hobby value="Surfing"> Surfing
-                    <input type="checkbox" hobby value="Lego"> Lego
-                    <input type="checkbox" hobby value="Gmara"> Gmara
-                    <input type="checkbox" hobby value="Cooking"> Cooking
+                    <label class="label">Hobbies</label><br><br>
+                    <input type="checkbox" class="hobby" hobby value="Movies"> <label  class="checkLabel" >Movies</label> <br>
+                    <input type="checkbox" class="hobby" hobby value="Surfing"><label  class="checkLabel">Surfing</label>  <br>
+                    <input type="checkbox" class="hobby" hobby value="Lego">  <label  class="checkLabel" >Lego</label><br>
+                    <input type="checkbox" class="hobby" hobby value="Gmara">  <label  class="checkLabel" >Gmara</label> <br>
+                    <input type="checkbox" class="hobby" hobby value="Cooking">  <label  class="checkLabel" >Cooking</label> <br>
                 </div>
     
                   <br />
@@ -119,6 +131,16 @@
                     id="btn3Id"
                   >
                     Submit
+                  </button>
+                
+                </div>
+                <div class="p-t-10">
+                  <button
+                    class="btn btn--pill btn--green"
+                    type="button"
+                    id="pahse3BackBtn"
+                  >
+                      Back       
                   </button>
                 </div>
               </form>
@@ -134,15 +156,18 @@
 
     <!-- Main JS-->
     <script>
-      let cityId, streetId, numId, btnId , pahse2;
+      let cityId, streetId, numId, btnId, pahse3BackBtn, imageId, hobbies , pahse2;
       const info = {};
       (() => {
         cityId = document.querySelector("#cityId");
         streetId = document.querySelector("#streetId");
         numId = document.querySelector("#numId");
         btnId = document.querySelector("#btnId");
+        imageId = document.querySelector("#imageId");
+        hobbies = document.querySelectorAll(".hobby");
         pahse2 = document.querySelector("#pahse2");
         pahse3 = document.querySelector("#pahse3");
+        pahse3BackBtn = document.querySelector("#pahse3BackBtn");
 
 
 
@@ -175,6 +200,7 @@
                 numId.className = 'input--style-3';
             }
 
+
         }
       }
       btnId.addEventListener(('click'), () => {
@@ -190,6 +216,32 @@
         console.log(" not valid");
 
       });
+      pahse3BackBtn.addEventListener(('click'), () => {
+        
+            info.imgUrl = imageId.value;
+
+            info.hobbies = "";
+        for(const hob of hobbies){
+            if(hob.checked){
+              if(info.hobbies == ""){
+                info.hobbies = hob.value;
+              }
+              else{
+                info.hobbies = info.hobbies+ ", " +  hob.value ;
+              }
+                  
+            }
+        }
+
+           pahse2.className = '';
+            pahse3.className += 'hidden';
+
+          console.log(info);
+        
+
+      });
+     
+        
     </script>
   </body>
 </html>
