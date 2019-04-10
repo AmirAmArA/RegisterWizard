@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Colorlib Templates" />
+    <meta name="author" content="Colorlib" />
+    <meta name="keywords" content="Colorlib Templates" />
+
+    <title>Registration Info</title>
+<style>
+
+.error{
+    border-bottom: 2px solid red;
+  }
+   .hidden  {
+       display: none;
+   }
+
+   .label {
+            width: 100px;
+            display: inline-block;
+            color: #ffffff;
+        }
+        
+        .hobby {
+            width: 40px;
+            color: #ffffff;
+        }
+
+        .checkLabel{
+          color: #ffffff;
+        }
+
+
+
+</style>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all" />
+  </head>
+
+  <body>
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+      <div class="wrapper wrapper--w780">
+        <div class="card card-3">
+          <div class="card-heading"></div>
+          <div class="card-body">
+            <h2 class="title">Registration Info</h2>
+            <!------------------phase1------------------->
+            <form id = 'pahse1'> 
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  id="nameid"
+                />
+              </div>
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  id="emailid"
+                />
+              </div>
+
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="date"
+                  placeholder="BirthDate"
+                  name="BirthDate"
+                  id="birthdateid"        
+                />
+              </div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+
+              <div class="p-t-10">
+                <button
+                  class="btn btn--pill btn--green"
+                  type="button"
+                  id="phase1btnId"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+            <!------------------phase1    -->
+            <!------------------phase2    -->
+
+
+            <form id = 'pahse2' class="hidden"> 
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="text"
+                  placeholder="City"
+                  name="city"
+                  id="cityId"
+                />
+              </div>
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="text"
+                  placeholder="Street"
+                  name="Street"
+                  id="streetId"
+                />
+              </div>
+
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="number"
+                  placeholder="Number"
+                  name="number"
+                  id="numId"
+                />
+              </div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+
+              <div class="p-t-10">
+                  
+              
+                <button style="float:right"
+                  class="btn btn--pill btn--green"
+                  type="button"
+                  id="btnId"
+                >
+                  Submit
+                </button>
+                <button style="float:left"
+                  class="btn btn--pill btn--green"
+                  type="button"
+                  id="phase2backbtn"
+                >  Back  
+              </button>
+               
+              </div>
+           
+            </form>
+<!------------------phase2    -->
+<!------------------phase3    -->
+            <form id = 'pahse3' class="hidden"> 
+                <div class="input-group">
+                  <input
+                    class="input--style-3"
+                    src=""
+                    type="text"
+                    placeholder=" image URL"
+                    id="imageId"
+                  />
+                </div>
+            
+                <div>
+                    <label class="label">Hobbies</label><br><br>
+                    <input type="checkbox" class="hobby" hobby value="Movies"> <label  class="checkLabel" >Movies</label> <br>
+                    <input type="checkbox" class="hobby" hobby value="Surfing"><label  class="checkLabel">Surfing</label>  <br>
+                    <input type="checkbox" class="hobby" hobby value="Lego">  <label  class="checkLabel" >Lego</label><br>
+                    <input type="checkbox" class="hobby" hobby value="Gmara">  <label  class="checkLabel" >Gmara</label> <br>
+                    <input type="checkbox" class="hobby" hobby value="Cooking">  <label  class="checkLabel" >Cooking</label> <br>
+                </div>
+    
+                  <br />
+                <br />
+  
+                <div class="p-t-10">
+                  <button
+                    class="btn btn--pill btn--green"
+                    type="button"
+                    id="btn3Id"
+                  >
+                    Submit
+                  </button>
+                
+                </div>
+                <div class="p-t-10">
+                  <button
+                    class="btn btn--pill btn--green"
+                    type="button"
+                    id="pahse3BackBtn"
+                  >
+                      Back       
+                  </button>
+                </div>
+                <div class="p-t-10">
+                  
+                    Submit
+                  </button>
+                </div>
+              </form>
+<!------------------phase3-------->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main JS-->
+    <script>
+      let cityId, streetId, numId, btnId , pahse2 ,pahse1;
+      let birthdateid ,emailid, nameid;
+      const info = {};
+      (() => {
+        cityId = document.querySelector("#cityId");
+        streetId = document.querySelector("#streetId");
+        numId = document.querySelector("#numId");
+        btnId = document.querySelector("#btnId");
+        imageId = document.querySelector("#imageId");
+        hobbies = document.querySelectorAll(".hobby");
+        pahse2 = document.querySelector("#pahse2");
+        pahse3 = document.querySelector("#pahse3");
+        pahse3BackBtn = document.querySelector("#pahse3BackBtn");
+
+        pahse1= document.querySelector("#pahse1");
+        phase1btnId= document.querySelector("#phase1btnId");///phase1 submit btn
+        nameid = document.querySelector("#nameid");
+        emailid = document.querySelector("#emailid");
+        birthdateid = document.querySelector("#birthdateid");
+        phase2backbtn = document.querySelector("#phase2backbtn");
+
+
+      })();
+// validate function to check if the inputs are valid or not return boolean
+      function validate() {
+        if ((cityId.value != "" && streetId.value != "" && numId.value > 0)) {
+            cityId.className = 'input--style-3';
+            streetId.className = 'input--style-3';
+            numId.className = 'input--style-3';
+
+          return true;
+        }
+        else {
+            if (cityId.value == "" ){
+                cityId.className += ' error';
+            }else {
+                cityId.className = 'input--style-3';
+            }
+
+            if (streetId.value == "" ){
+                streetId.className += ' error';
+            }else {
+                streetId.className = 'input--style-3';
+            }
+            
+             if (numId.value == "" ){
+                numId.className += ' error';
+            }else {
+                numId.className = 'input--style-3';
+            }
+
+
+        }
+      }
+      //phase2 submit btn
+      btnId.addEventListener(('click'), () => {
+        if (validate()) {
+            info.city = cityId.value;
+            info.street = streetId.value;
+            info.num = numId.value;
+            pahse2.className += 'hidden'; // maybee needed to change to = alone ...
+            pahse3.className = '';
+
+          console.log(info);
+        }else 
+        console.log(" not valid");
+
+      });
+      pahse3BackBtn.addEventListener(('click'), () => {
+        
+            info.imgUrl = imageId.value;
+
+            info.hobbies = "";
+        for(const hob of hobbies){
+            if(hob.checked){
+              if(info.hobbies == ""){
+                info.hobbies = hob.value;
+              }
+              else{
+                info.hobbies = info.hobbies+ ", " +  hob.value ;
+              }
+                  
+            }
+        }
+
+           pahse2.className = '';
+            pahse3.className += 'hidden';
+
+          console.log(info);
+        
+
+      });
+     
+        
+      function validateEmail(email) {//check if email input is valid
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+function validatePhase1(){
+  //birthdateid ,emailid, nameid
+  if(nameid.value.length > 2 && validateEmail(emailid.value) && birthdateid.value ){
+    nameid.className = 'input--style-3';
+    emailid.className = 'input--style-3';
+    birthdateid.className = 'input--style-3';
+    return true;
+  }//if
+  else {
+            if (nameid.value.length <= 2 ){
+              nameid.className += ' error';
+            }else {
+              nameid.className = 'input--style-3';
+            }
+
+            if (!validateEmail(emailid.value) ){
+              emailid.className += ' error';
+            }else {
+              emailid.className = 'input--style-3';
+            }
+            
+             if (!birthdateid.value ){
+              birthdateid.className += ' error';
+            }else {
+              birthdateid.className = 'input--style-3';
+            }
+
+        }
+
+}//validatephase1
+      phase1btnId.addEventListener(('click'),()=>{
+        if(validatePhase1()){
+          info.name=nameid.value
+          info.email = emailid.value
+          info.birthdate=birthdateid.value
+          pahse1.className="hidden";
+        pahse2.className="";
+        console.log(info);
+        }//if 
+        
+      });
+
+
+      phase2backbtn.addEventListener(('click') , ()=>{
+        pahse1.className="";
+        pahse2.className="hidden";
+      });
+    </script>
+  </body>
+</html>
