@@ -55,7 +55,57 @@
           <div class="card-heading"></div>
           <div class="card-body">
             <h2 class="title">Registration Info</h2>
-            <form id = 'pahse2'> 
+            <!------------------phase1------------------->
+            <form id = 'pahse1'> 
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  id="nameid"
+                />
+              </div>
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  id="emailid"
+                />
+              </div>
+
+              <div class="input-group">
+                <input
+                  class="input--style-3"
+                  type="date"
+                  placeholder="BirthDate"
+                  name="BirthDate"
+                  id="birthdateid"        
+                />
+              </div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+
+              <div class="p-t-10">
+                <button
+                  class="btn btn--pill btn--green"
+                  type="button"
+                  id="phase1btnId"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+            <!------------------phase1    -->
+            <!------------------phase2    -->
+
+
+            <form id = 'pahse2' class="hidden"> 
               <div class="input-group">
                 <input
                   class="input--style-3"
@@ -91,16 +141,27 @@
               <br />
 
               <div class="p-t-10">
-                <button
+                  
+              
+                <button style="float:right"
                   class="btn btn--pill btn--green"
                   type="button"
                   id="btnId"
                 >
                   Submit
                 </button>
+                <button style="float:left"
+                  class="btn btn--pill btn--green"
+                  type="button"
+                  id="phase2backbtn"
+                >  Back  
+              </button>
+               
               </div>
+           
             </form>
-
+<!------------------phase2    -->
+<!------------------phase3    -->
             <form id = 'pahse3' class="hidden"> 
                 <div class="input-group">
                   <input
@@ -143,12 +204,13 @@
                       Back       
                   </button>
                 </div>
+                <div class="p-t-10">
+                  
+                    Submit
+                  </button>
+                </div>
               </form>
-
-
-
-
-
+<!------------------phase3-------->
           </div>
         </div>
       </div>
@@ -156,7 +218,8 @@
 
     <!-- Main JS-->
     <script>
-      let cityId, streetId, numId, btnId, pahse3BackBtn, imageId, hobbies , pahse2;
+      let cityId, streetId, numId, btnId , pahse2 ,pahse1;
+      let birthdateid ,emailid, nameid;
       const info = {};
       (() => {
         cityId = document.querySelector("#cityId");
@@ -169,6 +232,12 @@
         pahse3 = document.querySelector("#pahse3");
         pahse3BackBtn = document.querySelector("#pahse3BackBtn");
 
+        pahse1= document.querySelector("#pahse1");
+        phase1btnId= document.querySelector("#phase1btnId");///phase1 submit btn
+        nameid = document.querySelector("#nameid");
+        emailid = document.querySelector("#emailid");
+        birthdateid = document.querySelector("#birthdateid");
+        phase2backbtn = document.querySelector("#phase2backbtn");
 
 
       })();
@@ -203,12 +272,13 @@
 
         }
       }
+      //phase2 submit btn
       btnId.addEventListener(('click'), () => {
         if (validate()) {
             info.city = cityId.value;
             info.street = streetId.value;
             info.num = numId.value;
-            pahse2.className += 'hidden';
+            pahse2.className += 'hidden'; // maybee needed to change to = alone ...
             pahse3.className = '';
 
           console.log(info);
@@ -242,6 +312,57 @@
       });
      
         
+      function validateEmail(email) {//check if email input is valid
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+function validatePhase1(){
+  //birthdateid ,emailid, nameid
+  if(nameid.value.length > 2 && validateEmail(emailid.value) && birthdateid.value ){
+    nameid.className = 'input--style-3';
+    emailid.className = 'input--style-3';
+    birthdateid.className = 'input--style-3';
+    return true;
+  }//if
+  else {
+            if (nameid.value.length <= 2 ){
+              nameid.className += ' error';
+            }else {
+              nameid.className = 'input--style-3';
+            }
+
+            if (!validateEmail(emailid.value) ){
+              emailid.className += ' error';
+            }else {
+              emailid.className = 'input--style-3';
+            }
+            
+             if (!birthdateid.value ){
+              birthdateid.className += ' error';
+            }else {
+              birthdateid.className = 'input--style-3';
+            }
+
+        }
+
+}//validatephase1
+      phase1btnId.addEventListener(('click'),()=>{
+        if(validatePhase1()){
+          info.name=nameid.value
+          info.email = emailid.value
+          info.birthdate=birthdateid.value
+          pahse1.className="hidden";
+        pahse2.className="";
+        console.log(info);
+        }//if 
+        
+      });
+
+
+      phase2backbtn.addEventListener(('click') , ()=>{
+        pahse1.className="";
+        pahse2.className="hidden";
+      });
     </script>
   </body>
 </html>
